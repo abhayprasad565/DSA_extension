@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="popup.css" />
+</head>
+
+<body>
+    <main>
+        <div class="wrap">
+            <img src="images/logo.webp" height="60px" width="300px" alt="Logo image">
+            <p>
+                Hi Student, I hope you are doing well.<br /> <br />
+                <b> Please remain signed in on leetcode,</b> so that I can help you with DSA practice on it.
+            </p>
+            <p id="countdown" style="display: none; color: green;"></p>
+            <hr class="solid">
+            <button id="myButton" class="emergency-button">Emergency
+            </button>
+            <p id="emergency-message" class="emergency-message"><b> You can press emergency <br> button to stop leetcode
+                    forcing.</b></p>
+            <p id="disable-message" class="disable-message"><b> You can use emergency <br> button once in a day.</b></p>
+            <div id="mode-div">
+                <p><b>Mode:</b></p>
+                <div>
+                    <input type="radio" id="daily" name="mode" value="daily">
+                    <label for="daily"
+                        title="This mode forces you to do the Daily LeetCode Coding Challenge"><b>LeetCode
+                            Daily
+                            Challenge</b></label>
+                    <br>
+                    <input type="radio" id="choose" name="mode" value="any" checked>
+                    <label for="choose" title="This mode forces you to solve any LeetCode chalenge for the day"><b>Any
+                            Problem</b></label>
+                </div>
+            </div>
+
+
+
+            <hr class="solid">
+            <p><b> For any feature request and query write us on <a
+                        href="mailto: abhaykp565@gmail.com">abhaykp565@gmail.com</a>.</b>
+            </p>
+        </div>
+    </main>
+    <script src="popup.js"></script>
+</body>
+
+</html>

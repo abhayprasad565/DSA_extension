@@ -1,0 +1,19 @@
+{
+    "name": "DSA LEETCODE PRACTICE FORCER",
+    "version": "2.0.6",
+    "description": "Helping in DSA preparation by getting rid of distractions and making the user solve DSA daily",
+    "manifest_version": 3,
+    "action": {
+        "default_icon": "images/icon.png",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "storage"
+    ],
+    "host_permissions": ["https://*/"],
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+      }
+}
