@@ -81,11 +81,12 @@ async function checkForNewCompletion(data) {
     const problemsData = await getLeetCodeData(LEETCODE_ALL_PROBLEMS_QUERY,
         { username: data.userStatus.username });
     const numSubmissions = problemsData.data.matchedUser.submitStats.acSubmissionNum[0].submissions;
-    const prevSubmissions = localStorage.getItem('numSubmissions');
+    const prevSubmissions = await chrome.storage.local.get('numSubmissions');
+    console.log(prevSubmissions);
 
     if (prevSubmissions.numSubmissions !== undefined
         && prevSubmissions.numSubmissions < numSubmissions) {
-        localStorage.setItem({
+        await chrome.storage.local.set({
             todayDateAfterChallenegeComplete: new Date().toDateString(),
             numSubmissions: numSubmissions
         });
@@ -93,7 +94,7 @@ async function checkForNewCompletion(data) {
         // if today's challenge is completed save today's date and use it if user is signed out
         return;
     }
-    console.log(localStorage.getItem('numSubmissions'));
+    console.log(await chrome.storage.local.get('numSubmissions'));
     redirect("/problemset/all/")
 }
 
