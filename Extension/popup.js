@@ -7,7 +7,7 @@ const dailyRadioButton = document.getElementById('daily');
 const toggleSwitch = document.getElementById('togBtn');
 
 function updateTimer() {
-    localStorage.getItem("storedTime", function (items) {
+    chrome.storage.local.get("storedTime", function (items) {
         // emergency button is clicked make sure that if current time is 3 hours more than last stored time (time when someone clicked the button)
         // then timer will start else nothing
         if (items.storedTime) {
@@ -40,7 +40,7 @@ function updateTimer() {
 setInterval(updateTimer, 1000); // setInterval to show the timer for every second.
 
 // this function will make sure that emergency button can be pressed once in a day.
-localStorage.getItem('storedDate', function (items) {
+chrome.storage.local.get('storedDate', function (items) {
     const lastStoredDate = items.storedDate;
     const todayDate = new Date().toDateString();
     if (lastStoredDate !== undefined && lastStoredDate === todayDate) {
@@ -61,20 +61,20 @@ button.onclick = () => {
     emergencyMessage.style.display = 'none'; // show disable message and hide emergency message.
 
     const currentDate = new Date();
-    localStorage.setItem({ storedDate: currentDate.toDateString() });
+    chrome.storage.local.set({ storedDate: currentDate.toDateString() });
 
     const updatedTime = new Date(currentDate.getTime() + (3 * 60 * 60 * 1000));
-    localStorage.setItem({ storedTime: updatedTime.toString() });
+    chrome.storage.local.set({ storedTime: updatedTime.toString() });
 }
 
 // this function will handle the daily mode functionality
 modeRadioButtons.forEach((radioButton) => {
     radioButton.onclick = () => {
-        localStorage.setItem({ mode: radioButton.value });
+        chrome.storage.local.set({ mode: radioButton.value });
     }
 });
 
-localStorage.getItem('mode', function (items) {
+chrome.storage.local.get('mode', function (items) {
     if (items.mode === "daily") {
         dailyRadioButton.checked = true;
     }
